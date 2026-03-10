@@ -97,6 +97,7 @@ declare global {
     capDrop?: string[];
     devices?: string[];
     privileged?: boolean;
+    updateCommandImage?: string;
   }
 
   interface IPanelResponseProtocol {
@@ -227,6 +228,7 @@ declare global {
       pageTitle: string;
       logoImage: string;
       backgroundImage: string;
+      sidebarPosition: string;
     };
   }
 
@@ -271,6 +273,7 @@ declare global {
     tags?: string[];
     isSummary?: boolean;
     key?: string;
+    dockerOptional?: any;
   }
 
   interface IQuickStartTemplate {
@@ -294,4 +297,5 @@ declare global {
   }
 }
 
-export {};
+export { };
+
