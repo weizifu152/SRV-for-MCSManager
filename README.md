@@ -1,17 +1,24 @@
-# SRV-for-MCSManager
-在MCSManager启用srv
 # MCSManager SRV 支持修复
 
-本文件夹包含修复MCSManager SRV解析支持的文件。
+本文件夹包含修复 MCSManager SRV 解析支持的文件。
 
 ## 修复内容
 
 1. **frontend/src/hooks/useOverviewInfo.ts**
+
    - 在 `ComputedNodeInfo` 接口中添加了 `enableSRV?: boolean` 属性
 
 2. **frontend/src/widgets/node/NodeDetailDialog.vue**
+
    - 在使用 `enableSRV` 属性时添加了类型断言 `(data as any).enableSRV`
-   - 确保SRV配置选项在节点编辑时正确显示
+   - 确保 SRV 配置选项在节点编辑时正确显示
+
+3. **frontend/src/services/apis/index.ts**
+
+   - 在 `editNode` 和 `addNode` API 接口中添加了 `enableSRV?: boolean` 参数
+
+4. **frontend/src/widgets/instance/dialogs/PingConfig.vue**
+   - 添加了 SRV 配置选项，用于 Minecraft 服务器状态检测
 
 ## 使用方法
 
@@ -21,12 +28,12 @@
 
 ## 功能说明
 
-- **SRV记录支持**：在添加分布式节点时支持SRV记录解析
-- **Minecraft状态检测**：支持Minecraft服务器的SRV记录解析
-- **默认启用**：SRV解析默认开启，可以在节点配置中手动禁用
+- **SRV 记录支持**：在添加分布式节点时支持 SRV 记录解析
+- **Minecraft 状态检测**：支持 Minecraft 服务器的 SRV 记录解析
+- **默认启用**：SRV 解析默认开启，可以在节点配置中手动禁用
 
 ## 注意事项
 
-- 确保DNS中已正确配置SRV记录
-- 对于Minecraft服务器，SRV记录格式为：`_minecraft._tcp.<domain>`
-- 对于Daemon节点，SRV记录格式为：`_mcsm-daemon._tcp.<domain>`
+- 确保 DNS 中已正确配置 SRV 记录
+- 对于 Minecraft 服务器，SRV 记录格式为：`_minecraft._tcp.<domain>`
+- 对于 Daemon 节点，SRV 记录格式为：`_mcsm-daemon._tcp.<domain>`
